@@ -1,0 +1,21 @@
+<div class="components-types" *ngIf="(filteredUsers$ | async) as users">
+  <div class="components-types__header">
+    <h4>Total Users: {{users?.length}}</h4>
+    <input class="components-types__search" type="text" [formControl]="filter" placeholder="Filter users by first name...">
+  </div>
+
+  <div class="cards-container">
+    <app-user-card *ngFor="let user of users" [user]="user"></app-user-card>
+  </div>
+
+</div>
+
+
+
+
+<!--TODO темплейт, який не влізе у вʼю порт
+  містить багато логіки, складно працювати
+  с у слові SOLID, спробуємо поділити
+  фільтр(asc\desc), пошук і табличка, яка рендериться-->
+
+

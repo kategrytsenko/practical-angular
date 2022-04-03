@@ -1,0 +1,28 @@
+.app-wrapper {
+  background-color: #E1ECED;
+}
+
+.app-navigation {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  background-color: #FFFFFF;
+
+  &__link {
+    display: block;
+    color: #828C97;
+    padding: 16px 10px;
+    text-decoration: none;
+    &-active {
+      background-color: #F1F1F1;
+      color: #465A6D;
+    }
+  }
+}
+
+.page-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px;
+}
