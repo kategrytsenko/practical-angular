@@ -1,0 +1,12 @@
+<div class="rendering">
+  <h3>Rendering with async pipe</h3>
+  <app-data-table *ngIf="(randomData$ | async) as randomData"
+                  [data]="randomData"
+                  [columnTitles]="columnTitles"></app-data-table>
+
+  <h3>Rendering without async pipe</h3>
+  <app-data-table *ngIf="randomDataBad"
+                  [data]="randomDataBad"
+                  [columnTitles]="columnTitles"></app-data-table>
+
+</div>

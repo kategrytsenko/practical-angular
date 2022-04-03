@@ -6,8 +6,7 @@
     <li *ngFor="let link of navigation">
       <a routerLink="{{ link.path }}"
          class="app-navigation__link"
-         routerLinkActive="app-navigation__link-active"
-         [routerLinkActiveOptions]= "{exact: true}">{{ link.name }}</a>
+         routerLinkActive="app-navigation__link-active">{{ link.name }}</a>
     </li>
   </ul>
 

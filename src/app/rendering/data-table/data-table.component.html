@@ -1,0 +1,16 @@
+<table *ngIf="data.length" class="table">
+  <thead>
+    <tr class="table-th">
+      <td *ngFor="let columnTitle of columnTitles" class="table-th-td">{{ columnTitle }}</td>
+    </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let dataItem of data; trackBy: trackByFn" class="table-tr">
+    <td class="table-td">{{ dataItem.animal }}</td>
+    <td class="table-td">{{ dataItem.color }}</td>
+    <td class="table-td">{{ dataItem.car }}</td>
+    <td class="table-td">{{ dataItem.city }}</td>
+  </tr>
+  </tbody>
+</table>

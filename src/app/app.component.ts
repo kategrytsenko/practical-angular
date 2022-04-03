@@ -8,12 +8,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   navigation = [
     {
-      path: '',
-      name: 'Home'
+      path: '/rendering',
+      name: 'Rendering'
     },
     {
-      path: '/rendering-t-1',
-      name: 'Rendering'
+      path: '/template-rendering',
+      name: 'Template rendering'
     },
     {
       path: '/components-types',

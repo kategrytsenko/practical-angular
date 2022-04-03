@@ -8,8 +8,8 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: "rendering-t-1",
-    loadChildren: () => import('./rendering-t-1/rendering-t-1.module').then(m => m.RenderingT1Module)
+    path: "rendering",
+    loadChildren: () => import('./rendering/rendering.module').then(m => m.RenderingModule)
   },
   {
     path: "components-types",
@@ -18,7 +18,11 @@ const routes: Routes = [
   {
     path: "resolver",
     loadChildren: () => import('./resolver/resolver.module').then(m => m.ResolverModule)
-  }
+  },
+  {
+    path: "template-rendering",
+    loadChildren: () => import('./template-rendering/template-rendering.module').then(m => m.TemplateRenderingModule)
+  },
 ];
 
 @NgModule({

@@ -13,6 +13,6 @@ export class ResolverComponent implements OnInit {
   }
 
   ngOnInit (): void {
-    this.dataFromResolver = this.route.snapshot.data.message;
+    this.dataFromResolver = this.route.snapshot.data.data;
   }
 }

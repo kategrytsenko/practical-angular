@@ -20,5 +20,14 @@
   }
   &__user-name {
     margin-bottom: 10px;
+    font-size: 18px;
+  }
+  &__link {
+    text-decoration: none;
+    cursor: pointer;
+    color: #465A6D;
+    &:hover {
+      color: #000000;
+    }
   }
 }
