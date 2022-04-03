@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { RandomData } from '../interfaces';
+import { delay } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class RandomDataService {
@@ -77,6 +78,10 @@ export class RandomDataService {
 
   getRandomData (): Observable<RandomData[]> {
     return of(this.data);
+  }
+
+  getRandomDataWithDelay (): Observable<RandomData[]> {
+    return of(this.data).pipe(delay(2000));
   }
 
   getRandomDataById (id: string): Observable<RandomData> {

@@ -1,3 +1,71 @@
 <div class="template-rendering">
-  jlkjkl
+<!-- does not render anything -->
+<!--  This is because with the ng-template tag we are simply defining a template, but we are not using it yet.-->
+  <ng-template>
+    <button class="tab-button"
+            (click)="login()">{{loginText}}</button>
+    <button class="tab-button"
+            (click)="signUp()">{{signUpText}}</button>
+  </ng-template>
+
+
+<!--  We display an alternative loading template while waiting for the data to arrive from the backend.-->
+  <div class="data-container" *ngIf="(randomDataWithDelay$ | async) as randomData else loading">
+    <h3>Data list</h3>
+    <ul>
+      <li *ngFor="let randomItem of randomData">
+        {{ randomItem.animal }}, {{ randomItem.color }}, {{ randomItem.city }}
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #loading>
+    <div>Loading...</div>
+  </ng-template>
+
+
+<!--  This would not work! Instead, we would get the following error message:-->
+<!--  Can't have multiple template bindings on one element. Use only one attribute
+named 'template' or prefixed with *-->
+
+<!--  <div class="data-list" *ngIf="(randomData$ | async) as randomData2"-->
+<!--       *ngFor="let randomItem of randomData2">-->
+<!--    <div class="animal">-->
+<!--      {{ randomItem.animal }}-->
+<!--    </div>-->
+<!--  </div>-->
+
+  <!--  This means that its not possible to apply two structural directives to the same element. In order to do so, we would have to do something similar to this:-->
+  <h3>Animals List: two structural directives + one container</h3>
+  <div *ngIf="(randomData$ | async) as randomData2" class="data-container">
+    <div *ngFor="let randomItem of randomData2">
+      <div>
+        {{ randomItem.animal }}
+      </div>
+    </div>
+  </div>
+
+<!--  In order to avoid having to create that extra div, we can instead use ng-container directive:-->
+  <h3>Cars list: ng-container directive usage</h3>
+  <ng-container *ngIf="(randomData$ | async) as randomData3">
+    <div *ngFor="let randomItem of randomData3">
+      <div class="">
+        {{randomItem.car}}
+      </div>
+    </div>
+  </ng-container>
+
+  <h3>ngTemplateOutlet directive</h3>
+<!--  We are using it to instantiate on the page the loading template that we defined above-->
+  <ng-container *ngTemplateOutlet="loading"></ng-container>
+
+
+  <h3>Template Context</h3>
+  <ng-template #estimateTemplate let-dataCounter="estimate">
+    <div> Approximately {{dataCounter}} items ...</div>
+  </ng-template>
+  <ng-container
+    *ngTemplateOutlet="estimateTemplate;context:ctx">
+  </ng-container>
+
 </div>
