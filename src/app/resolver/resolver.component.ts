@@ -7,12 +7,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./resolver.component.scss']
 })
 export class ResolverComponent implements OnInit {
+  dataFromResolver: string = '';
+
   constructor (private route: ActivatedRoute) {
   }
 
   ngOnInit (): void {
-    console.log(this.route.snapshot.data);
-    console.log('lkj');
-
+    this.dataFromResolver = this.route.snapshot.data.message;
   }
 }
