@@ -6,6 +6,6 @@ export class SimpleResolver implements Resolve<string> {
   constructor() {}
 
   resolve(route: ActivatedRouteSnapshot): string {
-    return "Just a simple resolver with with not very useful message...";
+    return "Just a simple resolver with not very useful message...";
   }
 }

@@ -6,14 +6,9 @@ import { RandomData } from '../../shared/interfaces';
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.scss']
 })
-export class DataTableComponent implements OnInit {
+export class DataTableComponent {
   @Input() data!: RandomData[];
   @Input() columnTitles!: string[];
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
   trackByFn(index: number, item: RandomData): string {
     return item.id;

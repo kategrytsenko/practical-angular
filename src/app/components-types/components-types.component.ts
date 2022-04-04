@@ -19,7 +19,7 @@ export class ComponentsTypesComponent implements OnInit {
   constructor (private usersService: UsersService) {
   }
 
-  ngOnInit () {
+  ngOnInit (): void {
     this.users$ = this.usersService.getUsers();
 
     this.filteredUsers$ = combineLatest(this.users$, this.filter$)

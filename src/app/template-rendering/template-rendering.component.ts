@@ -31,7 +31,7 @@ export class TemplateRenderingComponent implements OnInit {
   constructor (private randomDataService: RandomDataService) {
   }
 
-  ngOnInit () {
+  ngOnInit (): void {
     this.randomDataWithDelay$ = this.randomDataService.getRandomDataWithDelay();
 
     this.randomData$ = this.randomDataService.getRandomData();
