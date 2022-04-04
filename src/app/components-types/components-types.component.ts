@@ -13,8 +13,12 @@ import { map, startWith } from 'rxjs/operators';
 export class ComponentsTypesComponent implements OnInit {
   users$: Observable<User[]> = of([]);
   filteredUsers$: Observable<User[]> = of([]);
-  filter: FormControl = new FormControl('');
-  filter$: Observable<string> = this.filter.valueChanges.pipe(startWith(''));
+
+  // todo: this is example of the logic that can be extracted
+  // from container component to make it easier to grasp essentials,
+  // no going into deep of presentation logic
+  searchInput: FormControl = new FormControl('');
+  searchQuery$: Observable<string> = this.searchInput.valueChanges.pipe(startWith(''));
 
   private genderFilter$$ = new BehaviorSubject<string>('all');
 
@@ -24,7 +28,7 @@ export class ComponentsTypesComponent implements OnInit {
   ngOnInit () {
     this.users$ = this.usersService.getUsers();
 
-    this.filteredUsers$ = combineLatest([this.users$, this.filter$, this.genderFilter$$.asObservable()])
+    this.filteredUsers$ = combineLatest([this.users$, this.searchQuery$, this.genderFilter$$.asObservable()])
       .pipe(
         map(([users, searchQuery, genderFilter]): [Array<User>, string] => {
           if (genderFilter === 'all') {
