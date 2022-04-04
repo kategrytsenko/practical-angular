@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-// import { HttpClient } from "@angular/common/http";
 import { User } from '../interfaces';
 import { Observable, of } from 'rxjs';
 
@@ -56,17 +55,7 @@ export class UsersService {
     "gender": "Female"
   }];
 
-  constructor() {}
-
-  getDefaultUser(): Observable<User> {
-    return of(this.users[0]);
-  }
-
   getUsers(): Observable<User[]> {
     return of(this.users);
-  }
-
-  getUser(id: string | number): Observable<User> {
-    return of(this.users.find(user => user.id === id) || this.users[0]);
   }
 }
