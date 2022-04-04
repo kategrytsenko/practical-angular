@@ -4,6 +4,7 @@ import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
 import { User } from './interfaces';
 import { FormControl } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-components',
@@ -22,7 +23,7 @@ export class ComponentsTypesComponent implements OnInit {
 
   private genderFilter$$ = new BehaviorSubject<string>('all');
 
-  constructor (private usersService: UsersService) {
+  constructor (private usersService: UsersService, private route: ActivatedRoute) {
   }
 
   ngOnInit (): void {
@@ -44,9 +45,11 @@ export class ComponentsTypesComponent implements OnInit {
         map(([users, filterString]) =>
             users.filter(user => user.first_name.toLowerCase().indexOf(filterString.toLowerCase()) !== -1)),
       );
+
+    console.log("Message from the SimpleResolver", this.route.snapshot.data.message);
   }
 
-  public applyFilterByGender(choosenGender: string) {
+  public applyFilterByGender(choosenGender: string): void {
     this.genderFilter$$.next(choosenGender);
   }
 }

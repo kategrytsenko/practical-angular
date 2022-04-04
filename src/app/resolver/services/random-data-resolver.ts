@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
-import { RandomDataService } from './random-data.service';
-import { RandomData } from '../interfaces';
+import { RandomDataService } from '../../shared/services/random-data.service';
+import { RandomData } from '../../shared/interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class RandomDataResolver implements Resolve<RandomData> {

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ResolverComponent } from './components/simple-resolver/resolver.component';
 import { SimpleResolver } from '../shared/services/simple-resolver';
-import { RandomDataResolver } from '../shared/services/random-data-resolver';
+import { RandomDataResolver } from './services/random-data-resolver';
 import { RandomDataComponent } from './components/random-data/random-data.component';
 
 
