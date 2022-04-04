@@ -1,8 +1,10 @@
 <div class="components-types" *ngIf="(filteredUsers$ | async) as users">
   <div class="components-types__header">
     <h4>Total Users: {{users?.length}}</h4>
-    <input class="components-types__search" type="text" [formControl]="filter" placeholder="Filter users by first name...">
+    <input class="components-types__search" type="text" [formControl]="searchInput" placeholder="Filter users by first name...">
   </div>
+
+  <app-filters (filterByGender)="applyFilterByGender($event)"></app-filters>
 
   <div class="cards-container">
     <app-user-card *ngFor="let user of users" [user]="user"></app-user-card>

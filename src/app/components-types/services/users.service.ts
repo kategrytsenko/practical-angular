@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 
 @Injectable()
 export class UsersService {
-  users = [
+  private users = [
     {
     "id": 1,
     "first_name": "Shirlee",
