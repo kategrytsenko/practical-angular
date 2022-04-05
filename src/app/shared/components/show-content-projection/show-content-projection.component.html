@@ -1,8 +1,18 @@
 <div class="show-content-projection">
+  <div class="content-projection__header">
+    <ng-content select="[slot=header]"></ng-content>
+  </div>
+
+
   <div>Some info</div>
   <div>More info</div>
 
   <ng-content></ng-content>
 
   <div>I need add here some more useful elements...</div>
+
+
+  <div class="content-projection__body">
+    <ng-content select="[slot=body]"></ng-content>
+  </div>
 </div>
