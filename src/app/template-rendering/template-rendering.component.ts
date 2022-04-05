@@ -14,21 +14,14 @@ export class TemplateRenderingComponent implements OnInit, OnDestroy {
   randomData$: Observable<RandomData[]> = of([]);
   randomDataWithDelay$: Observable<RandomData[]> = of([]);
 
+  outerContext = 'outerContext';
 
   totalEstimate = 10;
-  ctx = { estimate: this.totalEstimate };
 
-  loginText = 'Login';
-  signUpText = 'Sign Up';
-  lessons = ['Lesson 1', 'Lessons 2'];
-
-  login () {
-    console.log('Login');
-  }
-
-  signUp () {
-    console.log('Sign Up');
-  }
+  templateContext = {
+    estimate: this.totalEstimate,
+    otherContextProperty: 'We are in the template context'
+  };
 
   private destroyed$$ = new Subject<void>();
 

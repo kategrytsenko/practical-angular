@@ -18,14 +18,13 @@ export class RenderingComponent implements OnInit {
   }
 
   ngOnInit () {
-    this.randomData$ = this.randomDataService.getRandomData();
-
-    // With this approach we need to unsubscribe
     this.randomDataBad$ = this.randomDataService.getRandomData()
       .subscribe((data) => this.randomDataBad = data);
+
+
+    this.randomData$ = this.randomDataService.getRandomData();
   }
 
-  //TODO: ngOnDestroy
 }
 
 

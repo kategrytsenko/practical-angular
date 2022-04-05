@@ -6,6 +6,7 @@ import { RandomData } from '../../shared/interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class RandomDataResolver implements Resolve<RandomData> {
+
   constructor(private randomDataService: RandomDataService) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<RandomData>|Promise<RandomData>|RandomData {

@@ -1,3 +1,11 @@
 .data-container {
   margin-bottom: 30px;
+  background-color: #FFFFFF;
+  padding: 20px 10px 30px 30px;
+  border-radius: 5px;
+  -webkit-box-shadow: 6px 4px 15px -5px #3F3F3F;
+  box-shadow: 6px 4px 15px -5px #3F3F3F;
+  h3 {
+    margin: 0 0 20px;
+  }
 }
