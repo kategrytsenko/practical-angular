@@ -15,13 +15,8 @@ export class ComponentsTypesComponent implements OnInit {
   users$: Observable<User[]> = of([]);
   filteredUsers$: Observable<User[]> = of([]);
 
-  // todo: this is example of the logic that can be extracted
-  // from container component to make it easier to grasp essentials,
-  // no going into deep of presentation logic
-  searchInput: FormControl = new FormControl('');
-  searchQuery$: Observable<string> = this.searchInput.valueChanges.pipe(startWith(''));
-
   private genderFilter$$ = new BehaviorSubject<string>('all');
+  private searchFilter$$ = new BehaviorSubject<string>('');
 
   constructor (private usersService: UsersService, private route: ActivatedRoute) {
   }
@@ -29,7 +24,7 @@ export class ComponentsTypesComponent implements OnInit {
   ngOnInit (): void {
     this.users$ = this.usersService.getUsers();
 
-    this.filteredUsers$ = combineLatest([this.users$, this.searchQuery$, this.genderFilter$$.asObservable()])
+    this.filteredUsers$ = combineLatest([this.users$, this.searchFilter$$.asObservable(), this.genderFilter$$.asObservable()])
       .pipe(
         map(([users, searchQuery, genderFilter]): [Array<User>, string] => {
           if (genderFilter === 'all') {
@@ -51,5 +46,9 @@ export class ComponentsTypesComponent implements OnInit {
 
   public applyFilterByGender(choosenGender: string): void {
     this.genderFilter$$.next(choosenGender);
+  }
+
+  public applyFilterBySearchString(searchText: string): void {
+    this.searchFilter$$.next(searchText)
   }
 }

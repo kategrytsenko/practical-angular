@@ -2,7 +2,7 @@
   <div class="components-types__header">
     <h4>Total Users: {{users?.length}}</h4>
     <app-filters (filterByGender)="applyFilterByGender($event)"></app-filters>
-    <input class="components-types__search" type="text" [formControl]="searchInput" placeholder="Filter users by first name...">
+    <app-search (filterSearchString)="applyFilterBySearchString($event)"></app-search>
   </div>
 
   <div class="cards-container">

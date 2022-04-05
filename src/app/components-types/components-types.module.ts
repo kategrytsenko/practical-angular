@@ -7,6 +7,7 @@ import { UsersService } from './services/users.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { FiltersComponent } from './components/filters/filters.component';
+import { SearchComponent } from './components/search/search.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { FiltersComponent } from './components/filters/filters.component';
     ComponentsTypesComponent,
     UserCardComponent,
     FiltersComponent,
+    SearchComponent,
   ],
   imports: [
     CommonModule,
