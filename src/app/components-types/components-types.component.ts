@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from './services/users.service';
-import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
-import { User } from './interfaces';
-import { FormControl } from '@angular/forms';
-import { map, startWith } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { User } from './interfaces';
+import { UsersService } from './services/users.service';
 
 @Component({
   selector: 'app-components',
@@ -12,19 +11,16 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./components-types.component.scss']
 })
 export class ComponentsTypesComponent implements OnInit {
-  users$: Observable<User[]> = of([]);
-  filteredUsers$: Observable<User[]> = of([]);
-
   private genderFilter$$ = new BehaviorSubject<string>('all');
   private searchFilter$$ = new BehaviorSubject<string>('');
+
+  public filteredUsers$!: Observable<User[]>;
 
   constructor (private usersService: UsersService, private route: ActivatedRoute) {
   }
 
   ngOnInit (): void {
-    this.users$ = this.usersService.getUsers();
-
-    this.filteredUsers$ = combineLatest([this.users$, this.searchFilter$$.asObservable(), this.genderFilter$$.asObservable()])
+    this.filteredUsers$ = combineLatest([this.usersService.getUsers(), this.searchFilter$$.asObservable(), this.genderFilter$$.asObservable()])
       .pipe(
         map(([users, searchQuery, genderFilter]): [Array<User>, string] => {
           if (genderFilter === 'all') {
