@@ -1,6 +1,6 @@
 <div class="components-types" *ngIf="(filteredUsers$ | async) as users">
   <div class="components-types__header">
-    <h4>Total Users: {{users?.length}}</h4>
+    <h4>Total Users: {{ (totalUserCount$ | async) || 0 }}</h4>
     <app-filters (filterByGender)="applyFilterByGender($event)"></app-filters>
     <app-search (filterSearchString)="applyFilterBySearchString($event)"></app-search>
   </div>

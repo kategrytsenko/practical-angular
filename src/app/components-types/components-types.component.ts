@@ -11,16 +11,21 @@ import { UsersService } from './services/users.service';
   styleUrls: ['./components-types.component.scss']
 })
 export class ComponentsTypesComponent implements OnInit {
+  private users$ = this.usersService.getUsers();
+
   private genderFilter$$ = new BehaviorSubject<string>('all');
   private searchFilter$$ = new BehaviorSubject<string>('');
 
   public filteredUsers$!: Observable<User[]>;
+  public totalUserCount$ = this.users$.pipe(
+    map(({ length }) => length)
+  );
 
   constructor (private usersService: UsersService, private route: ActivatedRoute) {
   }
 
   ngOnInit (): void {
-    this.filteredUsers$ = combineLatest([this.usersService.getUsers(), this.searchFilter$$.asObservable(), this.genderFilter$$.asObservable()])
+    this.filteredUsers$ = combineLatest([this.users$, this.searchFilter$$.asObservable(), this.genderFilter$$.asObservable()])
       .pipe(
         map(([users, searchQuery, genderFilter]): [Array<User>, string] => {
           if (genderFilter === 'all') {
