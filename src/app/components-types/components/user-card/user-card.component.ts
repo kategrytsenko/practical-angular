@@ -5,14 +5,8 @@ import { User } from '../../interfaces';
   selector: 'app-user-card',
   templateUrl: './user-card.component.html',
   styleUrls: ['./user-card.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserCardComponent {
   @Input() user!: User;
-
-  // executeFunction() {
-  //   console.log("App Rerendered");
-  //
-  //   return "This is Child Component"
-  // }
 }
