@@ -23,11 +23,9 @@ describe('SearchComponent', () => {
 
   it('should output inputted search query to the parent', () => {
     const outputSpy = spyOn(component, 'outputListener');
-
     const mockQuery = 'mock query';
 
     utils.dispatchSearchEvent(mockQuery);
-    fixture.detectChanges();
 
     expect(outputSpy).toHaveBeenCalledWith(mockQuery);
   });
@@ -52,6 +50,7 @@ describe('SearchComponent', () => {
     dispatchSearchEvent: (query: string) => {
       elements.getSearchInput().nativeElement.value = query;
       elements.getSearchInput().nativeElement.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
     },
   };
 });
