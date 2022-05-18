@@ -1,12 +1,16 @@
 <div class="app-wrapper">
-
-  <app-header></app-header>
+  <app-header data-role="app-header"></app-header>
 
   <ul class="app-navigation">
     <li *ngFor="let link of navigation">
-      <a routerLink="{{ link.path }}"
-         class="app-navigation__link"
-         routerLinkActive="app-navigation__link-active">{{ link.name }}</a>
+      <a
+        routerLink="{{ link.path }}"
+        class="app-navigation__link"
+        routerLinkActive="app-navigation__link-active"
+        data-role="navigation-link"
+      >
+        {{ link.name }}
+      </a>
     </li>
   </ul>
 
@@ -14,6 +18,5 @@
     <router-outlet></router-outlet>
   </div>
 
-  <app-footer></app-footer>
-
+  <app-footer data-role="app-footer"></app-footer>
 </div>

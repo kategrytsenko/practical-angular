@@ -1,10 +1,9 @@
-<div>
-	<label>Choose gender:
-		<select [formControl]="genderFilter">
-			<option>female</option>
-			<option>male</option>
-			<option>non-binary</option>
-			<option selected>all</option>
-		</select>
-	</label>
-</div>
+<label>
+  Choose gender:
+  <select [formControl]="genderFilter" data-role="gender-select">
+    <option>female</option>
+    <option>male</option>
+    <option>non-binary</option>
+    <option selected>all</option>
+  </select>
+</label>
